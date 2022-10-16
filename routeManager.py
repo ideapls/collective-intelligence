@@ -44,17 +44,13 @@ class Drone:
         print("Localização: " + str(self.localization) + "\n")
 
     def flight(self, matrix, localization):
-        if lock.acquire(False):
-            navigate(self, matrix, localization)
-            lock.release()
-        else:
-            print("Não pegou")
+        navigate(self, matrix, localization)
 
 
 drone1 = Drone(1)
 drone2 = Drone(2)
 
-locations = ['0', '4', '+']
+locations = ['0', '4']
 
 for b in matrix:
     print(*b)
@@ -78,9 +74,11 @@ def navigate(drone, matrix, localization):
     elif drone.id == 2:
         agent = '+'
     matrix[i][j] = agent
+    lock.acquire()
     for m in matrix:
         print(*m)
     print("\n")
+    lock.release()
 
 
 def find_neighbors(matrix, COL, ROW, current_position):
@@ -189,7 +187,7 @@ def a_star_pathfinding(matrix, COL, ROW, initial_state, final_states, drone):
 
 
 def d1(lock):
-    initial_state = find_positions(matrix, COL, ROW, locations[2])
+    initial_state = find_positions(matrix, COL, ROW, 'i')
     final_states = find_positions(matrix, COL, ROW, locations[0])
     a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone1)
     lock.acquire()
@@ -199,7 +197,7 @@ def d1(lock):
 
 
 def d2(lock):
-    initial_state = find_positions(matrix, COL, ROW, locations[2])
+    initial_state = find_positions(matrix, COL, ROW, 'i')
     final_states = find_positions(matrix, COL, ROW, locations[1])
     a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone2)
     lock.acquire()
@@ -222,6 +220,9 @@ def thread_controller(threads):
 
     for thread in threads:
         thread.join()
+
+
+thread_controller(threads)
 
 print()
 
