@@ -4,7 +4,7 @@ from threading import Thread
 from time import sleep
 import csv
 from math import sqrt
-from enum import Enum
+from status import Status
 
 board = open("data/map.csv")
 file = csv.reader(board)
@@ -16,12 +16,6 @@ ROW = int(node_list[0][1])
 matrix = node_list[1:]
 threads = []
 lock = threading.Lock()
-
-
-class Status(Enum):
-    AVAILABLE = 1
-    DELIVERING = 2
-    BACKING = 3
 
 
 class Drone:
@@ -206,8 +200,8 @@ def d2(lock):
     sleep(3)
 
 
-td1 = threading.Thread(target=d1, args=(lock,))
-td2 = threading.Thread(target=d2, args=(lock,))
+td1 = Thread(target=d1, args=(lock,))
+td2 = Thread(target=d2, args=(lock,))
 
 threads.append(td1)
 threads.append(td2)
@@ -226,5 +220,5 @@ thread_controller(threads)
 
 print()
 
-# for m in matrix:
-#    print(*m)
+for m in matrix:
+    print(*m)
