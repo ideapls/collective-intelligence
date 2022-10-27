@@ -1,5 +1,4 @@
 import threading
-from queue import Queue
 from threading import Thread
 from time import sleep
 import csv
@@ -43,8 +42,6 @@ class Drone:
 
 drone1 = Drone(1)
 drone2 = Drone(2)
-
-locations = ['0', '4']
 
 for b in matrix:
     print(*b)
@@ -92,13 +89,12 @@ def find_neighbors(matrix, COL, ROW, current_position):
 
 def find_better_state(fringe, state_heuristic):
     most_promising_value = 1000000000
-    most_promising_state = None
     most_promising_index = 0
     index = 0
     for state in fringe:
         if state_heuristic[state] < most_promising_value:
             most_promising_state = state
-            most_promising_value = state_heuristic[state]
+            most_promising_value = state_heuristic[most_promising_state]
             most_promising_index = index
         index = index + 1
     return most_promising_index
@@ -161,6 +157,7 @@ def a_star_pathfinding(matrix, COL, ROW, initial_state, final_states, drone):
         drone.report()
         if state in final_states:
             solution_found = True
+            break
         successor_states = find_neighbors(matrix, COL, ROW, state)
         expanded_states.append(state)
         for i in range(0, len(successor_states)):
@@ -182,7 +179,7 @@ def a_star_pathfinding(matrix, COL, ROW, initial_state, final_states, drone):
 
 def d1(lock):
     initial_state = find_positions(matrix, COL, ROW, 'i')
-    final_states = find_positions(matrix, COL, ROW, locations[0])
+    final_states = find_positions(matrix, COL, ROW, '0')
     a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone1)
     lock.acquire()
     a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone1)
@@ -192,7 +189,7 @@ def d1(lock):
 
 def d2(lock):
     initial_state = find_positions(matrix, COL, ROW, 'i')
-    final_states = find_positions(matrix, COL, ROW, locations[1])
+    final_states = find_positions(matrix, COL, ROW, '4')
     a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone2)
     lock.acquire()
     a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone2)
