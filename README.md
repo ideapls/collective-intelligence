@@ -35,8 +35,6 @@
   </p>
 </div>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
@@ -44,14 +42,11 @@ O objetivo deste código é criar um universo onde será possível simular o fun
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ### Ferramentas utilizadas
 
 * [![Python][Python.org]][Python-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ### Instalação
 
@@ -62,15 +57,12 @@ O objetivo deste código é criar um universo onde será possível simular o fun
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- LICENSE -->
 ## Licença
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contato
@@ -80,8 +72,6 @@ Igor Molina - (https://www.linkedin.com/in/igor-m-364748b6/) - igordsmolina@gmai
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
