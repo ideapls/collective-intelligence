@@ -183,22 +183,19 @@ def d1(lock):
     a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone1)
     lock.acquire()
     a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone1)
-    lock.release()
     sleep(3)
 
 
-def d2(lock):
+def d2():
     initial_state = find_positions(matrix, COL, ROW, 'i')
     final_states = find_positions(matrix, COL, ROW, '4')
     a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone2)
-    lock.acquire()
     a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone2)
-    lock.release()
     sleep(3)
 
 
 td1 = Thread(target=d1, args=(lock,))
-td2 = Thread(target=d2, args=(lock,))
+td2 = Thread(target=d2)
 
 threads.append(td1)
 threads.append(td2)
