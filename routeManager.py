@@ -18,8 +18,8 @@ lock = threading.Lock()
 
 
 class Drone:
-    def __init__(self, id, availability=Status.AVAILABLE.name, localization=HOME):
-        self.id = id
+    def __init__(self, idCode, availability=Status.AVAILABLE.name, localization=HOME):
+        self.idCode = idCode
         self.availability = availability
         self.localization = localization
 
@@ -32,7 +32,7 @@ class Drone:
     def report(self):
         print("=====================================\n")
         print("Status do drone:\n")
-        print("Identificador: " + str(self.id))
+        print("Identificador: " + str(self.idCode))
         print("Status: " + str(self.availability))
         print("Localização: " + str(self.localization) + "\n")
 
@@ -60,9 +60,9 @@ def navigate(drone, matrix, localization):
     agent = ''
     i = localization[0]
     j = localization[1]
-    if drone.id == 1:
+    if drone.idCode == 1:
         agent = '-'
-    elif drone.id == 2:
+    elif drone.idCode == 2:
         agent = '+'
     matrix[i][j] = agent
     lock.acquire()
@@ -160,8 +160,7 @@ def a_star_pathfinding(matrix, COL, ROW, initial_state, final_states, drone):
             break
         successor_states = find_neighbors(matrix, COL, ROW, state)
         expanded_states.append(state)
-        for i in range(0, len(successor_states)):
-            successor = successor_states[i]
+        for i, successor in enumerate(successor_states):
             if successor not in expanded_states and successor not in fringe:
                 fringe.append(successor)
                 if successor not in heuristic.keys():

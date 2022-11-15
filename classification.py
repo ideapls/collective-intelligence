@@ -1,7 +1,3 @@
-from enum import Enum
-from queue import Queue
-
-
 class Order:
     def __init__(self, weight=0, number=0, items=[]):
         self.weight = weight
