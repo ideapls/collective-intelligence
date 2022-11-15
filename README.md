@@ -42,7 +42,7 @@ O objetivo deste código é criar um universo onde será possível simular o fun
 
 ### Ferramentas utilizadas
 
-* [![Python][Python.org]][python-url]
+* [![Python] [Python.org]] [python-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
