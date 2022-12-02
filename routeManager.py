@@ -4,6 +4,7 @@ from time import sleep
 import csv
 from math import sqrt
 from status import Status
+from concurrent.futures import ThreadPoolExecutor
 
 board = open("data/map.csv")
 file = csv.reader(board)
@@ -15,11 +16,12 @@ ROW = int(node_list[0][1])
 matrix = node_list[1:]
 threads = []
 lock = threading.Lock()
+pool = ThreadPoolExecutor(2)
 
 
 class Drone:
-    def __init__(self, idCode, availability=Status.AVAILABLE.name, localization=HOME):
-        self.idCode = idCode
+    def __init__(self, id_code, availability=Status.AVAILABLE.name, localization=HOME):
+        self.id_code = id_code
         self.availability = availability
         self.localization = localization
 
@@ -32,9 +34,10 @@ class Drone:
     def report(self):
         print("=====================================\n")
         print("Status do drone:\n")
-        print("Identificador: " + str(self.idCode))
+        print("Identificador: " + str(self.id_code))
         print("Status: " + str(self.availability))
         print("Localização: " + str(self.localization) + "\n")
+        print("=====================================\n")
 
     def flight(self, matrix, localization):
         navigate(self, matrix, localization)
@@ -42,9 +45,6 @@ class Drone:
 
 drone1 = Drone(1)
 drone2 = Drone(2)
-
-for b in matrix:
-    print(*b)
 
 
 def find_positions(matrix, COL, ROW, value):
@@ -60,9 +60,9 @@ def navigate(drone, matrix, localization):
     agent = ''
     i = localization[0]
     j = localization[1]
-    if drone.idCode == 1:
+    if drone.id_code == 1:
         agent = '-'
-    elif drone.idCode == 2:
+    elif drone.id_code == 2:
         agent = '+'
     matrix[i][j] = agent
     lock.acquire()
@@ -176,25 +176,25 @@ def a_star_pathfinding(matrix, COL, ROW, initial_state, final_states, drone):
         print("Rota não encontrada")
 
 
-def d1(lock):
+def d1(lock, drone):
     initial_state = find_positions(matrix, COL, ROW, 'i')
     final_states = find_positions(matrix, COL, ROW, '0')
-    a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone1)
+    a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone)
     lock.acquire()
-    a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone1)
+    a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone)
     sleep(3)
 
 
-def d2():
+def d2(drone):
     initial_state = find_positions(matrix, COL, ROW, 'i')
     final_states = find_positions(matrix, COL, ROW, '4')
-    a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone2)
-    a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone2)
+    a_star_pathfinding(matrix, COL, ROW, initial_state[0], final_states, drone)
+    a_star_pathfinding(matrix, COL, ROW, final_states[0], initial_state, drone)
     sleep(3)
 
 
-td1 = Thread(target=d1, args=(lock,))
-td2 = Thread(target=d2)
+td1 = Thread(target=d1, args=(lock, drone1,))
+td2 = Thread(target=d2, args=(drone2,))
 
 threads.append(td1)
 threads.append(td2)
