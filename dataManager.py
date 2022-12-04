@@ -20,3 +20,8 @@ def insert_order(weight, items):
     }
 
     collection_name.insert_one(order)
+
+
+def get_orders():
+    documents = collection_name.find()
+    return list(documents)
