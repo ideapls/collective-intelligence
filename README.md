@@ -36,13 +36,24 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
-O objetivo deste código é criar um universo onde será possível simular o funcionamento de drones autônomos capazes de realizar tarefas definidas pelo usuário, de forma inteligente e otimizada. Na primeira etapa do projeto foi definido que o exemplo utilizado seria de um sistema de delivery para uma lanchonete que precisa realizar suas entregas de forma eficiente.
+O objetivo deste código é criar um universo onde será possível simular o funcionamento de drones autônomos capazes de 
+realizar tarefas definidas pelo usuário, de forma inteligente e otimizada. Na primeira etapa do projeto foi definido que 
+o exemplo utilizado seria de um sistema de delivery para uma lanchonete que precisa realizar suas entregas de forma eficiente.
+
+Para simular o funcionamento de dois agentes atuando ao mesmo tempo foi utilizado o conceito de Threads, onde é possível realizar o processamento duas ou mais tarefas simultaneamente.
+
+A primeira etapa do projeto são os registros de cada pedido que chega ao estabelecimento. Esse registro é feito no MongoDB, um banco de dados não relacional.
+Após os registros serem feitos, o núcleo da aplicação realiza uma busca no banco de dados, e armazena os itens cadastrados em uma fila, que será consumida por cada agente disponível para operação.
+Os agentes apresentados no simulador realizam um cálculo com base no algoritmo A* para encontrar o melhor percurso até o local de destino, e refazer o caminho até a origem (estabelecimento comercial).
+
+Durante todas as etapas citadas, o algoritmo emite um relatório com as informações de cada agente, incluindo: localização, qual pedido está sendo entregue e qual o status do agente em questão.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Ferramentas utilizadas
 
 * [![Python][Python.org]][python-url]
+* [![Mongo][mongo-shield]][mongo-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -52,6 +63,16 @@ O objetivo deste código é criar um universo onde será possível simular o fun
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
+2. Configure o MongoDB criando um usuário e senha para acesso ao banco de dados
+3. Crie uma coleção no MongoDB
+4. Crie a base de dados no Mongo DB
+5. Crie uma classe para conexão conforme o exemplo:
+
+![](C:/Users/igord/OneDrive/Imagens/Captura de tela 2022-12-05 192759.png)
+
+6. Para conseguir a string de conexão, siga a documentação do próprio MongoDB conforme a imagem sugere:
+
+![](C:/Users/igord/OneDrive/Imagens/Captura de tela 2022-12-05 192127.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,6 +107,8 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [product-screenshot]: images/screenshot.png
 [Python.org]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [python-url]: https://www.python.org
+[mongo-shield]: https://img.shields.io/badge/mongoDB-3670A0?style=for-the-badge&logo=mongodb&logoColor=green
+[mongo-url]: https://www.mongodb.com/home
 Footer
 © 2022 GitHub, Inc.
 Footer navigation
