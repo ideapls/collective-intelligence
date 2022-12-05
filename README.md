@@ -68,11 +68,11 @@ Durante todas as etapas citadas, o algoritmo emite um relatório com as informa�
 4. Crie a base de dados no Mongo DB
 5. Crie uma classe para conexão conforme o exemplo:
 
-![](C:/Users/igord/OneDrive/Imagens/Captura de tela 2022-12-05 192759.png)
+![](data/Captura de tela 2022-12-05 192759.png)
 
 6. Para conseguir a string de conexão, siga a documentação do próprio MongoDB conforme a imagem sugere:
 
-![](C:/Users/igord/OneDrive/Imagens/Captura de tela 2022-12-05 192127.png)
+![](data/Captura de tela 2022-12-05 192127.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
