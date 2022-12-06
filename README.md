@@ -63,9 +63,13 @@ Durante todas as etapas citadas, o algoritmo emite um relatório com as informa�
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-2. Configure o MongoDB criando um usuário e senha para acesso ao banco de dados
-3. Crie uma coleção no MongoDB
-4. Crie a base de dados no Mongo DB
+
+2. Configure o MongoDB criando um usuário e senha para acesso ao banco de dados;
+
+3. Crie uma coleção no MongoDB;
+
+4. Crie a base de dados no Mongo DB;
+
 5. Crie uma classe para conexão conforme o exemplo:
 
 ![](data/cap2.png)
