@@ -48,6 +48,12 @@ Os agentes apresentados no simulador realizam um cálculo com base no algoritmo 
 
 Durante todas as etapas citadas, o algoritmo emite um relatório com as informações de cada agente, incluindo: localização, qual pedido está sendo entregue e qual o status do agente em questão.
 
+## Funcionamento do algoritmo
+
+O arquivo principal do projeto inicia fazendo a leitura de um arquivo ".csv", que possui uma série de valores separados por vírgula. A leitura deste arquivo gera uma matriz cuja dimensão é definida no topo deste mesmo arquivo ".csv", e esta matriz é o plano em que ocorrem os eventos principais do sistema, como a representação gráfica dos agentes transitando para realização das entregas, a representação dos locais de entrega e a representação do estabelecimento onde é a origem dos agentes.
+
+Após todas essas definições acerca do universo que o sistema está gerando, foi utilizado o conceito de Threads para representar mais de um agente realizando ações de forma simultânea. A Thread é uma forma como um processo de um programa de computador é divido em duas ou mais tarefas que podem ser executadas concorrentemente, e este conceito está totalmente de acordo com o objetivo citado acima: representar mais de um agente realizado ações de forma simultânea.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Ferramentas utilizadas
