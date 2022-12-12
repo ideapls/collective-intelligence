@@ -79,12 +79,13 @@ Nesta etapa, um dos pontos adjacentes da lista aberta é selecionado e o process
 
 onde
 
-* G = custo do movimento para se ir do ponto de início até o ponto determinado na malha
-seguindo o caminho criado para chegar lá;
-* H = é o custo estimado do movimento para percorrer daquele ponto determinado até o destino final, ponto
-B. Isto é frequentemente referido como a heurística. Recebe este nome porque isto é uma adivinhação. Não sabemos a distância real entre os
-pontos até que encontremos o caminho, isto porque podemos ter todos os tipos de coisas no caminho
-(prédios, fios, postes de luz, estruturas, etc). Neste projeto foi utilizada uma forma para calcular H, porém existem muitas outras formas de chegar ao mesmo resultado.
+  * G = custo do movimento para se ir do ponto de início até o ponto determinado na malha
+  seguindo o caminho criado para chegar lá;
+  
+  * H = é o custo estimado do movimento para percorrer daquele ponto determinado até o destino final, ponto
+  B. Isto é frequentemente referido como a heurística. Recebe este nome porque isto é uma adivinhação. Não sabemos a distância real entre os
+  pontos até que encontremos o caminho, isto porque podemos ter todos os tipos de coisas no caminho
+  (prédios, fios, postes de luz, estruturas, etc). Neste projeto foi utilizada uma forma para calcular H, porém existem muitas outras formas de chegar ao mesmo         resultado.
 
 O caminho é gerado passando repetidamente pela lista aberta e escolhendo o ponto com a mais
 baixa contagem de F.
@@ -93,8 +94,8 @@ baixa contagem de F.
 
 ### Ferramentas utilizadas
 
-* [![Python][Python.org]][python-url]
-* [![Mongo][mongo-shield]][mongo-url]
+  * [![Python][Python.org]][python-url]
+  * [![Mongo][mongo-shield]][mongo-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,7 +105,6 @@ baixa contagem de F.
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-
 2. Configure o MongoDB criando um usuário e senha para acesso ao banco de dados;
 
 3. Crie uma coleção no MongoDB;
