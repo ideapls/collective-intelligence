@@ -50,10 +50,6 @@ Durante todas as etapas citadas, o algoritmo emite um relatório com as informa�
 
 Como citado anteriormente, o sistema realiza o cálculo do melhor percurso utilizando o algoritmo A*, que será detalhado nas próximas seções.
 
-## Função heurística: distância percorrida e distância Euclidiana
-
-
-
 ## Funcionamento do algoritmo
 
 O arquivo principal do projeto inicia fazendo a leitura de um arquivo ".csv", que possui uma série de valores separados por vírgula. A leitura deste arquivo gera uma matriz cuja dimensão é definida no topo deste mesmo arquivo ".csv", e esta matriz é o plano em que ocorrem os eventos principais do sistema, como a representação gráfica dos agentes transitando para realização das entregas, a representação dos locais de entrega e a representação do estabelecimento onde é a origem dos agentes.
@@ -73,7 +69,7 @@ cada um destes pontos, a origem (3,3) é salva como o nó pai. Este ponto do nó
 
 Nesta etapa, um dos pontos adjacentes da lista aberta é selecionado e o processo anterior é repetido, agora sem o ponto de origem, pois agora o agente está em um novo estado. A chave para determinar quais pontos utilizar enquanto a busca estiver sendo executada é a seguinte equação:
 
-*inserir imagem com a equação
+![](data/equacao-heuristica.png)
 
 onde
 
