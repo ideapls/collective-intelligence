@@ -62,6 +62,8 @@ Após todas essas definições acerca do universo que o sistema está gerando, f
 
 Com os agentes preparados para operar, o sistema começa a calcular o melhor trajeto até o ponto definido para entrega, e realiza o mesmo cálculo para retorno. Enquanto a execução do sistema está em andamento, um relatório está sendo exibido para monitorar cada passo dos agentes definidos para executar as tarefas. Esses relatórios incluem: id, peso (que neste caso está relacionado com a prioridade do pedido) e os itens do pedido.
 
+![](data/gif-exec.gif)
+
 ## Algoritmo A*
 
 A* é um algoritmo para planejamento de trajetórias em um grid contendo o destino, caminhos livres e obstáculos. Sendo amplamente utilizado para encontrar o caminho mais curto (aproximação), de uma maneira rápida e inteligente. Esse é um algoritmo guloso, em cada iteração ele faz a escolha que parece ser a melhor possível de acordo com algum critério, no caso deste sistema, o critério é a minimização da função heurística h. A função heurística é uma “dica” para o algoritmo
